@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ZEYNEP_SQLEXPRESS.BANK"
+  DTS:DTSID="{4E992F8F-0846-4766-97AC-F9B8CE4C6E56}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=ZEYNEP\SQLEXPRESS;Initial Catalog=BANK;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Integration Services Project1-{4E992F8F-0846-4766-97AC-F9B8CE4C6E56}ZEYNEP\SQLEXPRESS.BANK;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

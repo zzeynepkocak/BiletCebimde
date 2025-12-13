@@ -1,0 +1,1559 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/10/2025 10:49:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ZEYNEP"
+  DTS:CreatorName="ZEYNEP\Asus"
+  DTS:DTSID="{3B694F7F-5D4A-4CA2-A3F1-C6A6EE4A339A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="1055"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{4FDFA37A-3F41-4F62-91B4-BED52830C7B9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\GEÇİCİ MÜSTERİ KONUM"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B71B32BE-8A5C-4AAE-AB89-BF59B7AC1E08}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GEÇİCİ MÜSTERİ KONUM"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[GeciciMusteriKonum]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1254</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4E992F8F-0846-4766-97AC-F9B8CE4C6E56}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ZEYNEP_SQLEXPRESS.BANK]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MusteriID]"
+                      cachedDataType="i4"
+                      cachedName="MusteriID"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MusteriID]"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[MusteriID]" />
+                    <inputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AcilmaTarihi]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="AcilmaTarihi"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AcilmaTarihi]"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[AcilmaTarihi]" />
+                    <inputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SehirAd]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SehirAd"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SehirAd]"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[SehirAd]" />
+                    <inputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BolgeAd]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="BolgeAd"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BolgeAd]"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[BolgeAd]" />
+                    <inputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SiraNo]"
+                      cachedDataType="i8"
+                      cachedName="SiraNo"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SiraNo]"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[SiraNo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MusteriID]"
+                      dataType="i4"
+                      name="MusteriID" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AcilmaTarihi]"
+                      dataType="wstr"
+                      length="10"
+                      name="AcilmaTarihi" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SehirAd]"
+                      dataType="wstr"
+                      length="50"
+                      name="SehirAd" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BolgeAd]"
+                      dataType="wstr"
+                      length="50"
+                      name="BolgeAd" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SiraNo]"
+                      dataType="i4"
+                      name="SiraNo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+    H.MusteriID,
+    H.AcilmaTarihi,
+    S.SehirAd,
+    B.BolgeAd,
+    ROW_NUMBER() OVER (PARTITION BY H.MusteriID ORDER BY H.AcilmaTarihi ASC) AS SiraNo
+FROM dbo.HESAP H
+INNER JOIN dbo.BANKA_SUBE BS ON H.SubeID = BS.SubeID
+INNER JOIN dbo.ILCE I ON BS.IlceID = I.IlceID
+INNER JOIN dbo.SEHIR S ON I.SehirID = S.SehirID
+INNER JOIN dbo.BOLGE B ON S.BolgeID = B.BolgeID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1254</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{4E992F8F-0846-4766-97AC-F9B8CE4C6E56}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ZEYNEP_SQLEXPRESS.BANK]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[MusteriID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MusteriID]"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[MusteriID]"
+                      name="MusteriID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[AcilmaTarihi]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AcilmaTarihi]"
+                      length="10"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[AcilmaTarihi]"
+                      name="AcilmaTarihi"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[SehirAd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SehirAd]"
+                      length="50"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[SehirAd]"
+                      name="SehirAd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[BolgeAd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BolgeAd]"
+                      length="50"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[BolgeAd]"
+                      name="BolgeAd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[SiraNo]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SiraNo]"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].Columns[SiraNo]"
+                      name="SiraNo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MusteriID]"
+                      dataType="i4"
+                      name="MusteriID" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AcilmaTarihi]"
+                      dataType="wstr"
+                      length="10"
+                      name="AcilmaTarihi" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SehirAd]"
+                      dataType="wstr"
+                      length="50"
+                      name="SehirAd" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BolgeAd]"
+                      dataType="wstr"
+                      length="50"
+                      name="BolgeAd" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SiraNo]"
+                      dataType="i8"
+                      name="SiraNo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MusteriID]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MusteriID]"
+                      name="MusteriID" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AcilmaTarihi]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AcilmaTarihi]"
+                      name="AcilmaTarihi" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SehirAd]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SehirAd]"
+                      name="SehirAd" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BolgeAd]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BolgeAd]"
+                      name="BolgeAd" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SiraNo]"
+                      dataType="i8"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SiraNo]"
+                      name="SiraNo" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\GEÇİCİ MÜSTERİ KONUM.Paths[OLE DB Source Output]"
+              endId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GEÇİCİ MÜŞTERİ SERVET"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{99A846DB-08AA-4050-BC17-0E94DCE27AA1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GEÇİCİ MÜŞTERİ SERVET"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[GeciciMusteriServeti]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1254</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4E992F8F-0846-4766-97AC-F9B8CE4C6E56}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ZEYNEP_SQLEXPRESS.BANK]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MusteriID]"
+                      cachedDataType="i4"
+                      cachedName="MusteriID"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MusteriID]"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[MusteriID]" />
+                    <inputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NakitTRY]"
+                      cachedDataType="numeric"
+                      cachedName="NakitTRY"
+                      cachedPrecision="38"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NakitTRY]"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[NakitTRY]" />
+                    <inputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VarlikTRY]"
+                      cachedDataType="numeric"
+                      cachedName="VarlikTRY"
+                      cachedPrecision="38"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VarlikTRY]"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[VarlikTRY]" />
+                    <inputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ServetTRY]"
+                      cachedDataType="numeric"
+                      cachedName="ServetTRY"
+                      cachedPrecision="38"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServetTRY]"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServetTRY]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MusteriID]"
+                      dataType="i4"
+                      name="MusteriID" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NakitTRY]"
+                      dataType="numeric"
+                      name="NakitTRY"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VarlikTRY]"
+                      dataType="numeric"
+                      name="VarlikTRY"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServetTRY]"
+                      dataType="numeric"
+                      name="ServetTRY"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+   COALESCE(NakitTablosu.MusteriID, VarlikTablosu.MusteriID) AS MusteriID,
+   ISNULL(NakitTablosu.NakitTRY, 0) AS NakitTRY,
+   ISNULL(VarlikTablosu.VarlikTRY, 0) AS VarlikTRY,
+   (ISNULL(NakitTablosu.NakitTRY, 0) + ISNULL(VarlikTablosu.VarlikTRY, 0)) AS ServetTRY
+FROM
+   (SELECT H.MusteriID, SUM(H.Meblag * DT.Kur) AS NakitTRY
+    FROM dbo.HESAP H
+    INNER JOIN dbo.DOVIZ_TUR DT ON H.DovizID = DT.DovizID
+    GROUP BY H.MusteriID) NakitTablosu
+FULL OUTER JOIN
+   (SELECT MV.MusteriID, SUM(MV.Deger * DT.Kur) AS VarlikTRY
+    FROM dbo.MUSTERI_VARLIK MV
+    INNER JOIN dbo.DOVIZ_TUR DT ON MV.DovizID = DT.DovizID
+    GROUP BY MV.MusteriID) VarlikTablosu
+ON NakitTablosu.MusteriID = VarlikTablosu.MusteriID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1254</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{4E992F8F-0846-4766-97AC-F9B8CE4C6E56}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ZEYNEP_SQLEXPRESS.BANK]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[MusteriID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MusteriID]"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[MusteriID]"
+                      name="MusteriID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[NakitTRY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NakitTRY]"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[NakitTRY]"
+                      name="NakitTRY"
+                      precision="38"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[VarlikTRY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VarlikTRY]"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[VarlikTRY]"
+                      name="VarlikTRY"
+                      precision="38"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServetTRY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServetTRY]"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServetTRY]"
+                      name="ServetTRY"
+                      precision="38"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MusteriID]"
+                      dataType="i4"
+                      name="MusteriID" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NakitTRY]"
+                      dataType="numeric"
+                      name="NakitTRY"
+                      precision="38"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VarlikTRY]"
+                      dataType="numeric"
+                      name="VarlikTRY"
+                      precision="38"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServetTRY]"
+                      dataType="numeric"
+                      name="ServetTRY"
+                      precision="38"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MusteriID]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MusteriID]"
+                      name="MusteriID" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NakitTRY]"
+                      dataType="numeric"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NakitTRY]"
+                      name="NakitTRY"
+                      precision="38"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VarlikTRY]"
+                      dataType="numeric"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VarlikTRY]"
+                      name="VarlikTRY"
+                      precision="38"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServetTRY]"
+                      dataType="numeric"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServetTRY]"
+                      name="ServetTRY"
+                      precision="38"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\GEÇİCİ MÜŞTERİ SERVET.Paths[OLE DB Source Output]"
+              endId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\HEDEF MÜSTERİ LİSTESİ"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D359C2C1-579F-499E-AB9C-63666BAEEB42}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="HEDEF MÜSTERİ LİSTESİ"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[HedefMusteriListesi]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1254</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4E992F8F-0846-4766-97AC-F9B8CE4C6E56}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ZEYNEP_SQLEXPRESS.BANK]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MusteriID]"
+                      cachedDataType="i4"
+                      cachedName="MusteriID"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MusteriID]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[MusteriID]" />
+                    <inputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KategoriID]"
+                      cachedDataType="i4"
+                      cachedName="KategoriID"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KategoriID]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[KategoriID]" />
+                    <inputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TamAd]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="TamAd"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TamAd]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[TamAd]" />
+                    <inputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SehirAd]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SehirAd"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SehirAd]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[SehirAd]" />
+                    <inputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BolgeAd]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="BolgeAd"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BolgeAd]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[BolgeAd]" />
+                    <inputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Yas]"
+                      cachedDataType="i4"
+                      cachedName="Yas"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Yas]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[Yas]" />
+                    <inputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ServetTRY]"
+                      cachedDataType="numeric"
+                      cachedName="ServetTRY"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServetTRY]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServetTRY]" />
+                    <inputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SiraNo]"
+                      cachedDataType="i4"
+                      cachedName="SiraNo"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SiraNo]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[SiraNo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MusteriID]"
+                      dataType="i4"
+                      name="MusteriID" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KategoriID]"
+                      dataType="i4"
+                      name="KategoriID" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TamAd]"
+                      dataType="wstr"
+                      length="150"
+                      name="TamAd" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SehirAd]"
+                      dataType="wstr"
+                      length="50"
+                      name="SehirAd" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BolgeAd]"
+                      dataType="wstr"
+                      length="50"
+                      name="BolgeAd" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Yas]"
+                      dataType="i4"
+                      name="Yas" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServetTRY]"
+                      dataType="numeric"
+                      name="ServetTRY"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SiraNo]"
+                      dataType="i4"
+                      name="SiraNo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[HedefMusteriListesi]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">/* SADECE İLK 3 KAYDI GETİREN SORGULU VERSİYON */
+SELECT * FROM
+(
+    SELECT 
+        M.MusteriID,
+        M.KategoriID,
+        CASE 
+            WHEN M.IkinciAd IS NOT NULL AND M.IkinciAd &lt;&gt; '' THEN M.IlkAd + ' ' + M.IkinciAd + ' ' + M.Soyad
+            ELSE M.IlkAd + ' ' + M.Soyad
+        END AS TamAd,
+        K.SehirAd,
+        K.BolgeAd,
+        DATEDIFF(YEAR, M.DTarihi, '2025-11-16') AS Yas,
+        S.ServetTRY,
+        /* Sıralama: Bölge ve Kategori içinde, En Genç ve En Zengin */
+        DENSE_RANK() OVER (
+            PARTITION BY K.BolgeAd, M.KategoriID 
+            ORDER BY DATEDIFF(YEAR, M.DTarihi, '2025-11-16') ASC, S.ServetTRY DESC
+        ) AS SiraNo
+    FROM dbo.MUSTERI M
+    INNER JOIN dbo.GeciciMusteriKonum K ON M.MusteriID = K.MusteriID
+    INNER JOIN dbo.GeciciMusteriServeti S ON M.MusteriID = S.MusteriID
+) AS T
+WHERE T.SiraNo &lt;= 3  /* İŞTE SİHİRLİ DOKUNUŞ BURADA */</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1254</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{4E992F8F-0846-4766-97AC-F9B8CE4C6E56}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ZEYNEP_SQLEXPRESS.BANK]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[MusteriID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MusteriID]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[MusteriID]"
+                      name="MusteriID"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[KategoriID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KategoriID]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[KategoriID]"
+                      name="KategoriID"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[TamAd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TamAd]"
+                      length="150"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[TamAd]"
+                      name="TamAd"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[SehirAd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SehirAd]"
+                      length="50"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[SehirAd]"
+                      name="SehirAd"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[BolgeAd]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BolgeAd]"
+                      length="50"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[BolgeAd]"
+                      name="BolgeAd"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[Yas]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Yas]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[Yas]"
+                      name="Yas"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServetTRY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServetTRY]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[ServetTRY]"
+                      name="ServetTRY"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[SiraNo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SiraNo]"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].Columns[SiraNo]"
+                      name="SiraNo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MusteriID]"
+                      dataType="i4"
+                      name="MusteriID" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KategoriID]"
+                      dataType="i4"
+                      name="KategoriID" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TamAd]"
+                      dataType="wstr"
+                      length="152"
+                      name="TamAd" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SehirAd]"
+                      dataType="wstr"
+                      length="50"
+                      name="SehirAd" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BolgeAd]"
+                      dataType="wstr"
+                      length="50"
+                      name="BolgeAd" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Yas]"
+                      dataType="i4"
+                      name="Yas" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ServetTRY]"
+                      dataType="numeric"
+                      name="ServetTRY"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SiraNo]"
+                      dataType="i8"
+                      name="SiraNo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MusteriID]"
+                      dataType="i4"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MusteriID]"
+                      name="MusteriID" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KategoriID]"
+                      dataType="i4"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KategoriID]"
+                      name="KategoriID" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TamAd]"
+                      dataType="wstr"
+                      length="152"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TamAd]"
+                      name="TamAd" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SehirAd]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SehirAd]"
+                      name="SehirAd" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BolgeAd]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BolgeAd]"
+                      name="BolgeAd" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Yas]"
+                      dataType="i4"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Yas]"
+                      name="Yas" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServetTRY]"
+                      dataType="numeric"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ServetTRY]"
+                      name="ServetTRY"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SiraNo]"
+                      dataType="i8"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SiraNo]"
+                      name="SiraNo" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\HEDEF MÜSTERİ LİSTESİ.Paths[OLE DB Source Output]"
+              endId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F7ED3682-7A3E-47EC-BC9B-B4DCB7897976}"
+      DTS:From="Package\GEÇİCİ MÜSTERİ KONUM"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\GEÇİCİ MÜŞTERİ SERVET" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{9B152619-3364-411E-87B9-6A58B5C50C59}"
+      DTS:From="Package\GEÇİCİ MÜŞTERİ SERVET"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\HEDEF MÜSTERİ LİSTESİ" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\GEÇİCİ MÜSTERİ KONUM"
+          TopLeft="216.333321813908,65.2999995841583" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\GEÇİCİ MÜŞTERİ SERVET"
+          TopLeft="209.66665715062,198.433332200315" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\HEDEF MÜSTERİ LİSTESİ"
+          TopLeft="212.999991940956,340.233331422872" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="316.399989482264,106.899999584158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,91.5333326161571"
+              Start="0,0"
+              End="0,84.0333326161571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.0333326161571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="314.533324545788,240.033332200315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100.199999222557"
+              Start="0,0"
+              End="0,92.6999992225568">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.6999992225568" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\GEÇİCİ MÜSTERİ KONUM">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source"
+          TopLeft="345.499994933605,144.499997928739" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination"
+          TopLeft="350.499995306134,280.499996349216" />
+        <EdgeLayout
+          Id="Package\GEÇİCİ MÜSTERİ KONUM.Paths[OLE DB Source Output]"
+          TopLeft="421.499994933605,186.099997928739">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.6000003725291,94.3999984204769"
+              Start="0,0"
+              End="14.6000003725291,86.8999984204769">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.1999992102385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.1999992102385"
+                    Point2="0,47.1999992102385"
+                    Point3="4,47.1999992102385" />
+                  <mssgle:LineSegment
+                    End="10.6000003725291,47.1999992102385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.6000003725291,47.1999992102385"
+                    Point2="14.6000003725291,47.1999992102385"
+                    Point3="14.6000003725291,51.1999992102385" />
+                  <mssgle:LineSegment
+                    End="14.6000003725291,86.8999984204769" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\GEÇİCİ MÜŞTERİ SERVET">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source"
+          TopLeft="251.333319901593,44.4999997287989" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination"
+          TopLeft="252.166654828523,223.566665358875" />
+        <EdgeLayout
+          Id="Package\GEÇİCİ MÜŞTERİ SERVET.Paths[OLE DB Source Output]"
+          TopLeft="327.333319901593,86.0999997287989">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.4333349269297,137.466665630076"
+              Start="0,0"
+              End="10.4333349269297,129.966665630076">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.7333328150378" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,64.7333328150378"
+                    Point2="0,68.7333328150378"
+                    Point3="4,68.7333328150378" />
+                  <mssgle:LineSegment
+                    End="6.43333492692972,68.7333328150378" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.43333492692972,68.7333328150378"
+                    Point2="10.4333349269297,68.7333328150378"
+                    Point3="10.4333349269297,72.7333328150378" />
+                  <mssgle:LineSegment
+                    End="10.4333349269297,129.966665630076" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\HEDEF MÜSTERİ LİSTESİ">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source"
+          TopLeft="315.49999538064,99.4999985992909" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination"
+          TopLeft="298.499996080995,256.499996706843" />
+        <EdgeLayout
+          Id="Package\HEDEF MÜSTERİ LİSTESİ.Paths[OLE DB Source Output]"
+          TopLeft="387.799995730817,141.099998599291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,115.399998107553"
+              Start="0,0"
+              End="0,107.899998107553">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,107.899998107553" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
