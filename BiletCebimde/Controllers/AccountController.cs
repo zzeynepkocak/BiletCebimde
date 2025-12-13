@@ -64,6 +64,8 @@ namespace BiletCebimde.Controllers
 
                 if (result.Succeeded)
                 {
+                    // Yeni kullanıcıya varsayılan olarak "User" rolü atanır
+                    await userManager.AddToRoleAsync(users, "User");
                     return RedirectToAction("Login", "Account");
                 }
                 else

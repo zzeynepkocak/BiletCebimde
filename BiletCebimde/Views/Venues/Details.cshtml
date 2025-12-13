@@ -1,0 +1,57 @@
+@model BiletCebimde.ViewModels.VenueViewModel
+
+@{
+    ViewData["Title"] = "Mekan Detayları";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">
+                        <i class="bi bi-info-circle"></i> Mekan Detayları
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">ID:</dt>
+                        <dd class="col-sm-9">@Model.Id</dd>
+
+                        <dt class="col-sm-3">Mekan Adı:</dt>
+                        <dd class="col-sm-9">
+                            <strong>@Model.Name</strong>
+                        </dd>
+
+                        <dt class="col-sm-3">Adres:</dt>
+                        <dd class="col-sm-9">@Model.Address</dd>
+
+                        <dt class="col-sm-3">Etkinlik Sayısı:</dt>
+                        <dd class="col-sm-9">
+                            <span class="badge bg-primary fs-6">@Model.EventCount</span>
+                        </dd>
+                    </dl>
+
+                    <div class="mt-4">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-arrow-left"></i> Mekan Listesine Dön
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-md-2">
+                                <i class="bi bi-pencil"></i> Düzenle
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                                <i class="bi bi-trash"></i> Sil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+}
+

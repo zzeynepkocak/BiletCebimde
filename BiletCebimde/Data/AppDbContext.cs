@@ -1,68 +1,63 @@
-﻿using BiletCebimde.Models; // Users, Category, Event vb. sınıflarınızın bulunduğu namespace
+﻿using BiletCebimde.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata; // DeleteBehavior.Restrict için gerekebilir
+using Microsoft.EntityFrameworkCore.Metadata;
+using System.Linq; // foreach döngüsü için gerekebilir
 
 namespace BiletCebimde.Data
 {
-    // IdentityDbContext<Users> kullandığınız için Users sınıfı otomatik yönetilir.
-    // Bu nedenle AppDbContext içinde Users için DbSet tanımlaması YAPILMAZ!
+    // IdentityDbContext<Users>: Özel Users sınıfınızın yönetimi otomatik olarak sağlanır.
     public class AppDbContext : IdentityDbContext<Users>
     {
-        public AppDbContext(DbContextOptions options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 
-        // --- 1. Yeni Entity'ler (Varlıklar) için DbSet'ler ---
-
-        // DİKKAT: Users sınıfı için burada DbSet yoktur!
+        // --- 1. Entity (Varlık) DbSet'leri ---
+        // Users sınıfı için DbSet tanımlamasına GEREK YOKTUR!
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Venue> Venues { get; set; }
         public DbSet<Event> Events { get; set; }
-
-        // Many-to-Many bağlantı tablosu
         public DbSet<Registration> Registrations { get; set; }
 
 
         // --- 2. İlişkileri ve Anahtarları Yapılandırma ---
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            // Identity tablolarını doğru yapılandırmak için ZORUNLUDUR!
+            // ❗ ZORUNLU: Identity tablolarını (Users, Roles, vs.) yapılandırmak için. 
+            // Bu, 'Users' üzerinde anahtar tanımlanması hatasını önler.
             base.OnModelCreating(builder);
 
             // 1. Registration (Kayıt) Tablosunun Composite Key'ini tanımlama
             builder.Entity<Registration>()
                 .HasKey(r => new { r.UserId, r.EventId });
 
-            // 2. Registration ve Users (Kullanıcı) İlişkisi (Restrict ile silme kısıtlaması)
+            // 2. Registration ve Users İlişkisi (Many-to-Many - Kullanıcının Katıldığı Etkinlikler)
             builder.Entity<Registration>()
                 .HasOne(r => r.User)
-                .WithMany()
+                // Users modelinde 'Registrations' koleksiyonunun olduğunu varsayıyoruz.
+                .WithMany(u => u.Registrations)
                 .HasForeignKey(r => r.UserId)
+                // Kısıtlama: Kullanıcıyı silmek için önce tüm kayıtları silmelisiniz.
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // 3. Event ve Organizatör (Users) İlişkisi (Restrict ile silme kısıtlaması)
+            // 3. Event ve Organizatör (Users) İlişkisi (One-to-Many - Kullanıcının Düzenlediği Etkinlikler)
             builder.Entity<Event>()
                 .HasOne(e => e.Organizer)
-                .WithMany()
+                // Users modelinde 'OrganizedEvents' koleksiyonunun olduğunu varsayıyoruz.
+                .WithMany(u => u.OrganizedEvents)
                 .HasForeignKey(e => e.OrganizerId)
+                // Kısıtlama: Organizatörü silmek için önce düzenlediği tüm etkinlikleri silmelisiniz.
                 .OnDelete(DeleteBehavior.Restrict);
 
             // 4. Registration ve Event İlişkisi
             builder.Entity<Registration>()
                 .HasOne(r => r.Event)
                 .WithMany(e => e.Registrations)
-                .HasForeignKey(r => r.EventId);
-
-            // SQLite veya PostgreSQL kullanıyorsanız, Cascade Delete sorunlarını önlemek için 
-            // varsayılan kısıtlamaları kaldırmak gerekebilir.
-            // Örneğin:
-            // foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            // {
-            //     relationship.DeleteBehavior = DeleteBehavior.Restrict;
-            // }
+                .HasForeignKey(r => r.EventId)
+                // Mantıklı: Bir etkinlik silinirse, buna bağlı tüm kayıtlar da silinmeli.
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
