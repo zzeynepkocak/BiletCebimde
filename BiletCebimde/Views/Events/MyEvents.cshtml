@@ -1,0 +1,141 @@
+@model IEnumerable<BiletCebimde.ViewModels.EventViewModel>
+
+@{
+    ViewData["Title"] = "Etkinliklerim";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">
+            <i class="bi bi-calendar-event"></i> Etkinliklerim
+        </h2>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Yeni Etkinlik Oluştur
+        </a>
+    </div>
+
+    <!-- Başarı/Hata Mesajları -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle"></i> @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Etkinlik Listesi -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Etkinlik Adı</th>
+                        <th>Tarih</th>
+                        <th>Kategori</th>
+                        <th>Mekan</th>
+                        <th>Kontenjan</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <strong>@item.Title</strong>
+                                @if (!string.IsNullOrEmpty(item.Description) && item.Description.Length > 50)
+                                {
+                                    <br />
+                                    <small class="text-muted">@item.Description.Substring(0, 50)...</small>
+                                }
+                                else if (!string.IsNullOrEmpty(item.Description))
+                                {
+                                    <br />
+                                    <small class="text-muted">@item.Description</small>
+                                }
+                            </td>
+                            <td>
+                                @item.Date.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))
+                                <br />
+                                <small class="text-muted">@item.Date.ToString("HH:mm")</small>
+                            </td>
+                            <td>
+                                <span class="badge bg-info">@item.CategoryName</span>
+                            </td>
+                            <td>@item.VenueName</td>
+                            <td>
+                                <strong>@item.RegisteredCount / @item.Capacity</strong>
+                                @{
+                                    var remaining = item.Capacity - item.RegisteredCount;
+                                    var percentage = item.Capacity > 0 ? (item.RegisteredCount * 100.0 / item.Capacity) : 0;
+                                }
+                                <div class="progress mt-1" style="height: 5px;">
+                                    <div class="progress-bar @(percentage >= 100 ? "bg-danger" : percentage >= 80 ? "bg-warning" : "bg-success")" 
+                                         role="progressbar" 
+                                         style="width: @(percentage > 100 ? 100 : percentage)%"></div>
+                                </div>
+                                <small class="text-muted">@remaining boş yer</small>
+                            </td>
+                            <td>
+                                @if (item.Date < DateTime.Now)
+                                {
+                                    <span class="badge bg-secondary">Geçmiş</span>
+                                }
+                                else if (item.RegisteredCount >= item.Capacity)
+                                {
+                                    <span class="badge bg-danger">Dolu</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">Açık</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary" title="Detaylar">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning" title="Düzenle">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a asp-action="Participants" asp-route-id="@item.Id" class="btn btn-sm btn-info" title="Katılımcılar">
+                                        <i class="bi bi-people"></i> (@item.RegisteredCount)
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Sil">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            <i class="bi bi-info-circle"></i> 
+            <strong>Henüz etkinlik oluşturmadınız.</strong>
+            <br />
+            <a asp-action="Create" class="alert-link mt-2 d-inline-block">
+                İlk etkinliğinizi oluşturmak için tıklayın.
+            </a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+}
+

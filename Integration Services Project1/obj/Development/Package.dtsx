@@ -11,8 +11,8 @@
   DTS:LocaleID="1055"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{4FDFA37A-3F41-4F62-91B4-BED52830C7B9}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{BC424482-1C5F-401B-8E14-0AD2B54428D0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1355,13 +1355,13 @@ WHERE T.SiraNo &lt;= 3  /* İŞTE SİHİRLİ DOKUNUŞ BURADA */</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,41.6"
-          Id="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source"
-          TopLeft="345.499994933605,144.499997928739" />
-        <NodeLayout
           Size="171.2,41.6"
           Id="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination"
           TopLeft="350.499995306134,280.499996349216" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source"
+          TopLeft="345.499994933605,144.499997928739" />
         <EdgeLayout
           Id="Package\GEÇİCİ MÜSTERİ KONUM.Paths[OLE DB Source Output]"
           TopLeft="421.499994933605,186.099997928739">
@@ -1399,6 +1399,27 @@ WHERE T.SiraNo &lt;= 3  /* İŞTE SİHİRLİ DOKUNUŞ BURADA */</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\GEÇİCİ MÜŞTERİ SERVET">
     <LayoutInfo>
@@ -1449,19 +1470,40 @@ WHERE T.SiraNo &lt;= 3  /* İŞTE SİHİRLİ DOKUNUŞ BURADA */</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\HEDEF MÜSTERİ LİSTESİ">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,41.6"
-          Id="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source"
-          TopLeft="315.49999538064,99.4999985992909" />
-        <NodeLayout
           Size="171.2,41.6"
           Id="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination"
           TopLeft="298.499996080995,256.499996706843" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source"
+          TopLeft="315.49999538064,99.4999985992909" />
         <EdgeLayout
           Id="Package\HEDEF MÜSTERİ LİSTESİ.Paths[OLE DB Source Output]"
           TopLeft="387.799995730817,141.099998599291">
@@ -1488,36 +1530,7 @@ WHERE T.SiraNo &lt;= 3  /* İŞTE SİHİRLİ DOKUNUŞ BURADA */</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\GEÇİCİ MÜSTERİ KONUM\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\GEÇİCİ MÜŞTERİ SERVET\OLE DB Destination">
+    design-time-name="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1531,19 +1544,6 @@ WHERE T.SiraNo &lt;= 3  /* İŞTE SİHİRLİ DOKUNUŞ BURADA */</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\HEDEF MÜSTERİ LİSTESİ\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

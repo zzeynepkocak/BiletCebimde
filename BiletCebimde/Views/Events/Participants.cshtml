@@ -1,0 +1,105 @@
+@model IEnumerable<BiletCebimde.Models.Registration>
+
+@{
+    ViewData["Title"] = "Katılımcılar";
+    var eventTitle = ViewBag.EventTitle as string ?? "Etkinlik";
+    var eventId = ViewBag.EventId as int?;
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-0">
+                <i class="bi bi-people"></i> Katılımcılar
+            </h2>
+            <p class="text-muted mb-0">@eventTitle</p>
+        </div>
+        <div>
+            <a asp-action="MyEvents" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Etkinliklerime Dön
+            </a>
+            <a asp-action="Details" asp-route-id="@eventId" class="btn btn-outline-primary">
+                <i class="bi bi-eye"></i> Etkinlik Detayları
+            </a>
+        </div>
+    </div>
+
+    <!-- Başarı/Hata Mesajları -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle"></i> @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Katılımcı Listesi -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="card shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-list-check"></i> Toplam @Model.Count() Katılımcı
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ad Soyad</th>
+                                <th>E-posta</th>
+                                <th>Kayıt Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int index = 1;
+                            }
+                            @foreach (var registration in Model.OrderBy(r => r.RegistrationDate))
+                            {
+                                <tr>
+                                    <td>@index</td>
+                                    <td>
+                                        <strong>@(registration.User?.FullName ?? "Bilinmiyor")</strong>
+                                    </td>
+                                    <td>
+                                        <i class="bi bi-envelope"></i> @(registration.User?.Email ?? "Bilinmiyor")
+                                    </td>
+                                    <td>
+                                        <i class="bi bi-calendar-check"></i> 
+                                        @registration.RegistrationDate.ToString("dd MMMM yyyy, HH:mm", new System.Globalization.CultureInfo("tr-TR"))
+                                    </td>
+                                </tr>
+                                index++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            <i class="bi bi-info-circle"></i> 
+            <strong>Bu etkinliğe henüz katılımcı kaydı yapılmamış.</strong>
+            <br />
+            <small class="text-muted">Katılımcılar kayıt oldukça burada görünecektir.</small>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+}
+

@@ -4,13 +4,13 @@
     ViewData["Title"] = "Etkinlikler";
 }
 
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0">Etkinlikler</h2>
+<div class="container mt-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Etkinlikler</h2>
         @if (User.IsInRole("Admin") || User.IsInRole("Organizer"))
         {
-            <a asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Yeni Etkinlik Oluştur
+            <a asp-action="Create" class="btn btn-primary btn-sm">
+                Yeni Etkinlik
             </a>
         }
     </div>
@@ -18,6 +18,7 @@
     <!-- Filtreleme ve Arama Formu -->
     <div class="card mb-4">
         <div class="card-body">
+            <h5 class="card-title mb-3">Etkinlik Filtrele</h5>
             <form asp-action="Index" method="get" class="row g-3">
                 <div class="col-md-4">
                     <label for="searchString" class="form-label">Ara</label>
@@ -28,7 +29,7 @@
                            value="@(ViewBag.SearchString ?? string.Empty)" 
                            placeholder="Etkinlik adı veya açıklama ara...">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="categoryId" class="form-label">Kategori</label>
                     <select class="form-select" 
                             id="categoryId" 
@@ -36,22 +37,64 @@
                         <option value="">Tüm Kategoriler</option>
                         @if (ViewBag.Categories != null)
                         {
-                            @foreach (var category in ViewBag.Categories as List<BiletCebimde.ViewModels.CategoryViewModel>)
+                            var categories = ViewBag.Categories as List<BiletCebimde.ViewModels.CategoryViewModel>;
+                            @if (categories != null)
                             {
-                                var isSelected = ViewBag.CategoryId != null && ViewBag.CategoryId == category.Id;
-                                <option value="@category.Id" selected="@isSelected">
-                                    @category.Name
-                                </option>
+                                @foreach (var category in categories)
+                                {
+                                    var isSelected = ViewBag.CategoryId != null && ViewBag.CategoryId == category.Id;
+                                    <option value="@category.Id" selected="@isSelected">
+                                        @category.Name
+                                    </option>
+                                }
                             }
                         }
                     </select>
                 </div>
-                <div class="col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-outline-primary me-2">
+                <div class="col-md-3">
+                    <label for="venueId" class="form-label">Mekan</label>
+                    <select class="form-select" 
+                            id="venueId" 
+                            name="venueId">
+                        <option value="">Tüm Mekanlar</option>
+                        @if (ViewBag.Venues != null)
+                        {
+                            var venues = ViewBag.Venues as List<BiletCebimde.ViewModels.VenueViewModel>;
+                            @if (venues != null)
+                            {
+                                @foreach (var venue in venues)
+                                {
+                                    var isSelected = ViewBag.VenueId != null && ViewBag.VenueId == venue.Id;
+                                    <option value="@venue.Id" selected="@isSelected">
+                                        @venue.Name
+                                    </option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="startDate" class="form-label">Başlangıç</label>
+                    <input type="date" 
+                           class="form-control" 
+                           id="startDate" 
+                           name="startDate" 
+                           value="@(ViewBag.StartDate?.ToString("yyyy-MM-dd") ?? string.Empty)">
+                </div>
+                <div class="col-md-2">
+                    <label for="endDate" class="form-label">Bitiş</label>
+                    <input type="date" 
+                           class="form-control" 
+                           id="endDate" 
+                           name="endDate" 
+                           value="@(ViewBag.EndDate?.ToString("yyyy-MM-dd") ?? string.Empty)">
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary me-2">
                         <i class="bi bi-search"></i> Filtrele
                     </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">
-                        <i class="bi bi-x-circle"></i> Temizle
+                    <a asp-action="Index" class="btn btn-secondary">
+                        Temizle
                     </a>
                 </div>
             </form>
@@ -65,10 +108,20 @@
             @foreach (var item in Model)
             {
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body d-flex flex-column">
+                    <div class="card h-100 event-card">
+                        <div class="event-image" style="height: 200px; overflow: hidden; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center;">
+                            @if (!string.IsNullOrEmpty(item.ImageUrl))
+                            {
+                                <img src="@item.ImageUrl" alt="@item.Title" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size: 3rem;\'>@item.CategoryName</span>';" />
+                            }
+                            else
+                            {
+                                <span style="font-size: 3rem;">@item.CategoryName</span>
+                            }
+                        </div>
+                        <div class="card-body">
                             <div class="mb-2">
-                                <span class="badge bg-info text-dark">@item.CategoryName</span>
+                                <span class="badge bg-info">@item.CategoryName</span>
                                 @if (item.RegisteredCount >= item.Capacity)
                                 {
                                     <span class="badge bg-danger">Dolu</span>
@@ -85,10 +138,10 @@
                             
                             <h5 class="card-title">@item.Title</h5>
                             
-                            <p class="card-text text-muted flex-grow-1">
-                                @if (item.Description != null && item.Description.Length > 100)
+                            <p class="card-text">
+                                @if (item.Description != null && item.Description.Length > 80)
                                 {
-                                    @item.Description.Substring(0, 100)
+                                    @item.Description.Substring(0, 80)
                                     <text>...</text>
                                 }
                                 else
@@ -97,36 +150,21 @@
                                 }
                             </p>
                             
-                            <div class="mt-auto">
-                                <div class="mb-2">
-                                    <small class="text-muted d-block">
-                                        <i class="bi bi-calendar-event"></i> 
-                                        <strong>Tarih:</strong> @item.Date.ToString("dd MMMM yyyy, dddd", new System.Globalization.CultureInfo("tr-TR")) 
-                                        @item.Date.ToString("HH:mm")
-                                    </small>
-                                    <small class="text-muted d-block">
-                                        <i class="bi bi-geo-alt"></i> 
-                                        <strong>Yer:</strong> @item.VenueName
-                                    </small>
-                                    <small class="text-muted d-block">
-                                        <i class="bi bi-people"></i> 
-                                        <strong>Kontenjan:</strong> @item.RegisteredCount / @item.Capacity
-                                    </small>
-                                    @if (!string.IsNullOrEmpty(item.OrganizerName))
-                                    {
-                                        <small class="text-muted d-block">
-                                            <i class="bi bi-person"></i> 
-                                            <strong>Organizatör:</strong> @item.OrganizerName
-                                        </small>
-                                    }
-                                </div>
-                                
-                                <div class="d-grid gap-2">
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
-                                        <i class="bi bi-info-circle"></i> Detaylar
-                                    </a>
-                                </div>
+                            <div class="mb-2">
+                                <small class="text-muted">
+                                    <strong>Tarih:</strong> @item.Date.ToString("dd.MM.yyyy HH:mm")
+                                </small><br>
+                                <small class="text-muted">
+                                    <strong>Yer:</strong> @item.VenueName
+                                </small><br>
+                                <small class="text-muted">
+                                    <strong>Kontenjan:</strong> @item.RegisteredCount / @item.Capacity
+                                </small>
                             </div>
+                            
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                Detaylar
+                            </a>
                         </div>
                     </div>
                 </div>

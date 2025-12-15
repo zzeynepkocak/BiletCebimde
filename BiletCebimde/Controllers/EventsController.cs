@@ -34,6 +34,35 @@ namespace BiletCebimde.Controllers
             _userManager = userManager;
         }
 
+        // Helper method: Etkinlik başlığına göre resim yolunu belirler
+        private string GetEventImageUrl(string title)
+        {
+            if (string.IsNullOrEmpty(title))
+                return "/image/default.png";
+
+            var titleLower = title.ToLowerInvariant();
+
+            // Etkinlik başlıklarına göre resim eşleştirmesi
+            if (titleLower.Contains("cem yılmaz") || titleLower.Contains("cem yilmaz"))
+                return "/image/cemyılmaz.png";
+            else if (titleLower.Contains("duman"))
+                return "/image/duman.png";
+            else if (titleLower.Contains("jazz") || titleLower.Contains("caz"))
+                return "/image/jazz.png";
+            else if (titleLower.Contains("klasik müzik") || titleLower.Contains("klasik muzik") || titleLower.Contains("senfoni"))
+                return "/image/klasikmuzik.png";
+            else if (titleLower.Contains("kral lear") || titleLower.Contains("kral lear"))
+                return "/image/krallear.png";
+            else if (titleLower.Contains("pamuk prenses") || titleLower.Contains("pamuk prenses"))
+                return "/image/pamuk prenses.png";
+            else if (titleLower.Contains("kuğu gölü") || titleLower.Contains("kugu golu") || titleLower.Contains("swan"))
+                return "/image/swan.png";
+            else if (titleLower.Contains("traviata") || titleLower.Contains("opera"))
+                return "/image/klasikmuzik.png"; // Opera için varsayılan resim
+            else
+                return "/image/default.png"; // Varsayılan resim (eğer yoksa boş gösterir)
+        }
+
         // GET: Events (Public - Herkes görebilir)
         public async Task<IActionResult> Index(int? categoryId, string? searchString)
         {
@@ -72,7 +101,8 @@ namespace BiletCebimde.Controllers
                 VenueName = e.Venue?.Name,
                 OrganizerName = e.Organizer?.FullName,
                 IsRegistered = userRegistrations.Contains(e.Id),
-                CanRegister = e.Date >= DateTime.Now && e.RegisteredCount < e.Capacity && !userRegistrations.Contains(e.Id)
+                CanRegister = e.Date >= DateTime.Now && e.RegisteredCount < e.Capacity && !userRegistrations.Contains(e.Id),
+                ImageUrl = GetEventImageUrl(e.Title)
             }).ToList();
 
             ViewBag.Categories = (await _categoryRepository.GetAllAsync())
@@ -114,7 +144,8 @@ namespace BiletCebimde.Controllers
                 VenueName = eventEntity.Venue?.Name,
                 OrganizerName = eventEntity.Organizer?.FullName,
                 IsRegistered = isRegistered,
-                CanRegister = eventEntity.Date >= DateTime.Now && eventEntity.RegisteredCount < eventEntity.Capacity && !isRegistered
+                CanRegister = eventEntity.Date >= DateTime.Now && eventEntity.RegisteredCount < eventEntity.Capacity && !isRegistered,
+                ImageUrl = GetEventImageUrl(eventEntity.Title)
             };
 
             return View(viewModel);
@@ -334,7 +365,8 @@ namespace BiletCebimde.Controllers
                 RegisteredCount = eventEntity.RegisteredCount,
                 CategoryName = eventEntity.Category?.Name,
                 VenueName = eventEntity.Venue?.Name,
-                OrganizerName = eventEntity.Organizer?.FullName
+                OrganizerName = eventEntity.Organizer?.FullName,
+                ImageUrl = GetEventImageUrl(eventEntity.Title)
             };
 
             return View(viewModel);
@@ -375,12 +407,19 @@ namespace BiletCebimde.Controllers
         {
             var currentUserId = _userManager.GetUserId(User);
             var currentUser = await _userManager.GetUserAsync(User);
-            var isAdmin = await _userManager.IsInRoleAsync(currentUser, "Admin");
+            var isAdmin = currentUser != null && await _userManager.IsInRoleAsync(currentUser, "Admin");
 
-            var events = await _eventRepository.GetAllAsync();
-            var eventsList = isAdmin
-                ? events.ToList()
-                : events.Where(e => e.OrganizerId == currentUserId).ToList();
+            var eventsQuery = _context.Events
+                .Include(e => e.Category)
+                .Include(e => e.Venue)
+                .AsQueryable();
+
+            if (!isAdmin)
+            {
+                eventsQuery = eventsQuery.Where(e => e.OrganizerId == currentUserId);
+            }
+
+            var eventsList = await eventsQuery.OrderByDescending(e => e.Date).ToListAsync();
 
             var viewModels = eventsList.Select(e => new EventViewModel
             {
@@ -391,8 +430,9 @@ namespace BiletCebimde.Controllers
                 Capacity = e.Capacity,
                 RegisteredCount = e.RegisteredCount,
                 CategoryName = e.Category?.Name,
-                VenueName = e.Venue?.Name
-            }).OrderByDescending(e => e.Date).ToList();
+                VenueName = e.Venue?.Name,
+                ImageUrl = GetEventImageUrl(e.Title)
+            }).ToList();
 
             return View(viewModels);
         }
@@ -409,7 +449,7 @@ namespace BiletCebimde.Controllers
 
             var currentUserId = _userManager.GetUserId(User);
             var currentUser = await _userManager.GetUserAsync(User);
-            var isAdmin = await _userManager.IsInRoleAsync(currentUser, "Admin");
+            var isAdmin = currentUser != null && await _userManager.IsInRoleAsync(currentUser, "Admin");
 
             // Organizer sadece kendi etkinliğinin katılanlarını görebilir
             if (!isAdmin && eventEntity.OrganizerId != currentUserId)

@@ -19,6 +19,13 @@
                         <strong>Uyarı!</strong> Bu işlem geri alınamaz. Etkinlik ve tüm kayıtlar kalıcı olarak silinecektir.
                     </div>
 
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <div class="mb-4" style="height: 250px; overflow: hidden; background-color: #f8f9fa; border-radius: 8px;">
+                            <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid w-100" style="height: 100%; object-fit: cover;" />
+                        </div>
+                    }
+
                     <h4 class="mb-4">Silmek istediğiniz etkinlik:</h4>
 
                     <dl class="row">

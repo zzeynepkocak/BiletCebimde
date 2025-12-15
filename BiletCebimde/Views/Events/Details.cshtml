@@ -11,6 +11,12 @@
                 <div class="card-header bg-primary text-white">
                     <h3 class="mb-0">@Model.Title</h3>
                 </div>
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <div style="height: 400px; overflow: hidden; background-color: #f8f9fa;">
+                        <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid w-100" style="height: 100%; object-fit: cover;" />
+                    </div>
+                }
                 <div class="card-body">
                     <!-- Kategori ve Durum Badge'leri -->
                     <div class="mb-3">

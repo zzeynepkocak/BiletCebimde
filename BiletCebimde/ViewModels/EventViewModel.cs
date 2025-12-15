@@ -44,6 +44,7 @@ namespace BiletCebimde.ViewModels
         public int RegisteredCount { get; set; }
         public bool IsRegistered { get; set; }
         public bool CanRegister { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }
 

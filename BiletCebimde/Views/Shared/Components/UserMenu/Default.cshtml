@@ -1,0 +1,62 @@
+@model BiletCebimde.ViewComponents.UserMenuViewModel
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Events" asp-action="Index">
+            Etkinlikler
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Dashboard" asp-action="Index">
+            Dashboard
+        </a>
+    </li>
+
+        @if (Model.IsAdmin)
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
+                    Admin Paneli
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                    <li><a class="dropdown-item" asp-controller="Categories" asp-action="Index">Kategoriler</a></li>
+                    <li><a class="dropdown-item" asp-controller="Venues" asp-action="Index">Mekanlar</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" asp-controller="Events" asp-action="MyEvents">Tüm Etkinlikler</a></li>
+                </ul>
+            </li>
+        }
+
+        @if (Model.IsOrganizer)
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" id="organizerDropdown" role="button" data-bs-toggle="dropdown">
+                    Organizatör İşlemleri
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="organizerDropdown">
+                    <li><a class="dropdown-item" asp-controller="Events" asp-action="Create">Yeni Etkinlik</a></li>
+                    <li><a class="dropdown-item" asp-controller="Events" asp-action="MyEvents">Etkinliklerim</a></li>
+                </ul>
+            </li>
+        }
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Registrations" asp-action="MyRegistrations">
+                Kayıtlarım
+            </a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                @(Model.CurrentUser?.FullName ?? Model.CurrentUser?.UserName ?? "Kullanıcı")
+                <span class="badge @Model.RoleBadgeClass ms-1">@Model.RoleDisplayName</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" asp-controller="Profile" asp-action="Index">Profilim</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+            </ul>
+        </li>
+</ul>
+
