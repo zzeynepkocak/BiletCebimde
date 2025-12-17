@@ -430,9 +430,8 @@ namespace BiletCebimde.Controllers
                 Capacity = e.Capacity,
                 RegisteredCount = e.RegisteredCount,
                 CategoryName = e.Category?.Name,
-                VenueName = e.Venue?.Name,
-                ImageUrl = GetEventImageUrl(e.Title)
-            }).ToList();
+                VenueName = e.Venue?.Name
+            }).OrderByDescending(e => e.Date).ToList();
 
             return View(viewModels);
         }
