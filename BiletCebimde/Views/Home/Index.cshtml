@@ -1,40 +1,56 @@
-﻿@{
+@{
     ViewData["Title"] = "Ana Sayfa";
 }
 
 <div class="hero-section">
     <div class="container">
-        <h1 class="display-4 mb-3">BiletCebimde'ye Hoş Geldiniz</h1>
-        <p class="lead mb-3">Etkinlikleri keşfedin ve kayıt olun</p>
-        <a asp-controller="Events" asp-action="Index" class="btn btn-light">
-            Etkinlikleri Görüntüle
+        <h1 class="display-4 mb-3">
+            <i class="bi bi-ticket-perforated me-3"></i>
+            BiletCebimde'ye Hoş Geldiniz
+        </h1>
+        <p class="lead mb-4">Türkiye'nin en büyük etkinlik platformu. Konserler, tiyatrolar, operalar ve daha fazlası!</p>
+        <a asp-controller="Events" asp-action="Index" class="btn btn-light btn-lg">
+            <i class="bi bi-calendar-event me-2"></i>Etkinlikleri Keşfet
         </a>
     </div>
 </div>
 
 <div class="container">
-    <div class="row mb-4">
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>Tiyatro</h5>
-                    <p>Klasik ve modern tiyatro oyunları</p>
+    <div class="row mb-5">
+        <div class="col-12 text-center mb-4">
+            <h2 class="fw-bold mb-3">Popüler Kategoriler</h2>
+            <p class="text-muted">Size uygun etkinliği bulun</p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-soft">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-mask" style="font-size: 3rem; color: #f97316;"></i>
+                    </div>
+                    <h5 class="card-title">Tiyatro</h5>
+                    <p class="card-text">Klasik ve modern tiyatro oyunları</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>Konser</h5>
-                    <p>Rock, pop, klasik müzik</p>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-soft">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-music-note-beamed" style="font-size: 3rem; color: #fb923c;"></i>
+                    </div>
+                    <h5 class="card-title">Konser</h5>
+                    <p class="card-text">Rock, pop, klasik müzik konserleri</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5>Opera & Bale</h5>
-                    <p>Klasik müzik ve dans</p>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-soft">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-star" style="font-size: 3rem; color: #f59e0b;"></i>
+                    </div>
+                    <h5 class="card-title">Opera & Bale</h5>
+                    <p class="card-text">Klasik müzik ve dans gösterileri</p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-﻿@using BiletCebimde.ViewModels
+@using BiletCebimde.ViewModels
 @model LoginViewModel
 
 @{
@@ -8,36 +8,48 @@
 
 <div class="account-container">
     <div class="account-box">
-        <h2 class="text-center mb-4">Login</h2>
+        <div class="text-center mb-4">
+            <i class="bi bi-box-arrow-in-right" style="font-size: 3rem; color: #f97316; margin-bottom: 1rem;"></i>
+            <h2>Giriş Yap</h2>
+            <p class="text-muted mb-0" style="font-size: 0.95rem;">Hesabınıza giriş yapın</p>
+        </div>
         <form asp-action="Login" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
-                <label asp-for="Email" class="form-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <label asp-for="Email" class="form-label">
+                    <i class="bi bi-envelope me-2"></i>E-posta
+                </label>
+                <input asp-for="Email" class="form-control" placeholder="ornek@email.com" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="Password" class="form-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <label asp-for="Password" class="form-label">
+                    <i class="bi bi-lock me-2"></i>Şifre
+                </label>
+                <input asp-for="Password" class="form-control" placeholder="Şifrenizi girin" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="float-end">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="form-check">
+                    <input asp-for="RememberMe" class="form-check-input" />
+                    <label class="form-check-label" asp-for="RememberMe">
+                        Beni Hatırla
+                    </label>
+                </div>
                 <a asp-controller="Account" asp-action="VerifyEmail" class="text-decoration-none">
-                    Forgot password?
+                    Şifremi Unuttum
                 </a>
             </div>
-            <div class="form-check mb-3">
-                <label class="form-check-label">
-                    <input asp-for="RememberMe" class="form-check-input" />
-                    @Html.DisplayNameFor(a => a.RememberMe)
-                </label>
-            </div>
-            <input type="submit" value="Login" class="btn btn-success w-100 p-2" />
-            <p class="text-center mt-2">
-                Don't have an account? <a asp-controller="Account" asp-action="Register" class="text-decoration-none">Register</a>
+            <button type="submit" class="btn btn-success w-100 mb-3">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Giriş Yap
+            </button>
+            <p class="text-center mt-3 mb-0">
+                Hesabınız yok mu? <a asp-controller="Account" asp-action="Register" class="text-decoration-none fw-bold">Kayıt Ol</a>
             </p>
-            <div class="text-center">
-                <a asp-controller="Home" asp-action="Index" class="text-decoration-none mt-3">Back</a>
+            <div class="text-center mt-3">
+                <a asp-controller="Home" asp-action="Index" class="text-decoration-none">
+                    <i class="bi bi-arrow-left me-1"></i>Ana Sayfaya Dön
+                </a>
             </div>
         </form>
     </div>
